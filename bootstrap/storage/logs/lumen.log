@@ -1,0 +1,48 @@
+[2018-09-12 06:53:18] local.ERROR: ErrorException: file_put_contents(/Users/jan/Projekte/Privat/k8sctrl/bootstrap/database/migrations/2018_09_12_065318_create_users_table.php): failed to open stream: No such file or directory in /Users/jan/Projekte/Privat/k8sctrl/vendor/illuminate/filesystem/Filesystem.php:122
+Stack trace:
+#0 [internal function]: Laravel\Lumen\Application->Laravel\Lumen\Concerns\{closure}(2, 'file_put_conten...', '/Users/jan/Proj...', 122, Array)
+#1 /Users/jan/Projekte/Privat/k8sctrl/vendor/illuminate/filesystem/Filesystem.php(122): file_put_contents('/Users/jan/Proj...', '<?php\n\nuse Illu...', 0)
+#2 /Users/jan/Projekte/Privat/k8sctrl/vendor/illuminate/database/Migrations/MigrationCreator.php(58): Illuminate\Filesystem\Filesystem->put('/Users/jan/Proj...', '<?php\n\nuse Illu...')
+#3 /Users/jan/Projekte/Privat/k8sctrl/vendor/illuminate/database/Console/Migrations/MigrateMakeCommand.php(109): Illuminate\Database\Migrations\MigrationCreator->create('create_users_ta...', '/Users/jan/Proj...', 'user', true)
+#4 /Users/jan/Projekte/Privat/k8sctrl/vendor/illuminate/database/Console/Migrations/MigrateMakeCommand.php(93): Illuminate\Database\Console\Migrations\MigrateMakeCommand->writeMigration('create_users_ta...', 'user', true)
+#5 [internal function]: Illuminate\Database\Console\Migrations\MigrateMakeCommand->handle()
+#6 /Users/jan/Projekte/Privat/k8sctrl/vendor/illuminate/container/BoundMethod.php(29): call_user_func_array(Array, Array)
+#7 /Users/jan/Projekte/Privat/k8sctrl/vendor/illuminate/container/BoundMethod.php(87): Illuminate\Container\BoundMethod::Illuminate\Container\{closure}()
+#8 /Users/jan/Projekte/Privat/k8sctrl/vendor/illuminate/container/BoundMethod.php(31): Illuminate\Container\BoundMethod::callBoundMethod(Object(Laravel\Lumen\Application), Array, Object(Closure))
+#9 /Users/jan/Projekte/Privat/k8sctrl/vendor/illuminate/container/Container.php(564): Illuminate\Container\BoundMethod::call(Object(Laravel\Lumen\Application), Array, Array, NULL)
+#10 /Users/jan/Projekte/Privat/k8sctrl/vendor/illuminate/console/Command.php(183): Illuminate\Container\Container->call(Array)
+#11 /Users/jan/Projekte/Privat/k8sctrl/vendor/symfony/console/Command/Command.php(251): Illuminate\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Illuminate\Console\OutputStyle))
+#12 /Users/jan/Projekte/Privat/k8sctrl/vendor/illuminate/console/Command.php(170): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Illuminate\Console\OutputStyle))
+#13 /Users/jan/Projekte/Privat/k8sctrl/vendor/symfony/console/Application.php(886): Illuminate\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#14 /Users/jan/Projekte/Privat/k8sctrl/vendor/symfony/console/Application.php(262): Symfony\Component\Console\Application->doRunCommand(Object(Illuminate\Database\Console\Migrations\MigrateMakeCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#15 /Users/jan/Projekte/Privat/k8sctrl/vendor/symfony/console/Application.php(145): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#16 /Users/jan/Projekte/Privat/k8sctrl/vendor/illuminate/console/Application.php(89): Symfony\Component\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#17 /Users/jan/Projekte/Privat/k8sctrl/vendor/laravel/lumen-framework/src/Console/Kernel.php(116): Illuminate\Console\Application->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 /Users/jan/Projekte/Privat/k8sctrl/artisan(35): Laravel\Lumen\Console\Kernel->handle(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#19 {main} {"exception":"[object] (ErrorException(code: 0): file_put_contents(/Users/jan/Projekte/Privat/k8sctrl/bootstrap/database/migrations/2018_09_12_065318_create_users_table.php): failed to open stream: No such file or directory at /Users/jan/Projekte/Privat/k8sctrl/vendor/illuminate/filesystem/Filesystem.php:122)
+[stacktrace]
+#0 [internal function]: Laravel\\Lumen\\Application->Laravel\\Lumen\\Concerns\\{closure}(2, 'file_put_conten...', '/Users/jan/Proj...', 122, Array)
+#1 /Users/jan/Projekte/Privat/k8sctrl/vendor/illuminate/filesystem/Filesystem.php(122): file_put_contents('/Users/jan/Proj...', '<?php\
+\
+use Illu...', 0)
+#2 /Users/jan/Projekte/Privat/k8sctrl/vendor/illuminate/database/Migrations/MigrationCreator.php(58): Illuminate\\Filesystem\\Filesystem->put('/Users/jan/Proj...', '<?php\
+\
+use Illu...')
+#3 /Users/jan/Projekte/Privat/k8sctrl/vendor/illuminate/database/Console/Migrations/MigrateMakeCommand.php(109): Illuminate\\Database\\Migrations\\MigrationCreator->create('create_users_ta...', '/Users/jan/Proj...', 'user', true)
+#4 /Users/jan/Projekte/Privat/k8sctrl/vendor/illuminate/database/Console/Migrations/MigrateMakeCommand.php(93): Illuminate\\Database\\Console\\Migrations\\MigrateMakeCommand->writeMigration('create_users_ta...', 'user', true)
+#5 [internal function]: Illuminate\\Database\\Console\\Migrations\\MigrateMakeCommand->handle()
+#6 /Users/jan/Projekte/Privat/k8sctrl/vendor/illuminate/container/BoundMethod.php(29): call_user_func_array(Array, Array)
+#7 /Users/jan/Projekte/Privat/k8sctrl/vendor/illuminate/container/BoundMethod.php(87): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#8 /Users/jan/Projekte/Privat/k8sctrl/vendor/illuminate/container/BoundMethod.php(31): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Laravel\\Lumen\\Application), Array, Object(Closure))
+#9 /Users/jan/Projekte/Privat/k8sctrl/vendor/illuminate/container/Container.php(564): Illuminate\\Container\\BoundMethod::call(Object(Laravel\\Lumen\\Application), Array, Array, NULL)
+#10 /Users/jan/Projekte/Privat/k8sctrl/vendor/illuminate/console/Command.php(183): Illuminate\\Container\\Container->call(Array)
+#11 /Users/jan/Projekte/Privat/k8sctrl/vendor/symfony/console/Command/Command.php(251): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#12 /Users/jan/Projekte/Privat/k8sctrl/vendor/illuminate/console/Command.php(170): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#13 /Users/jan/Projekte/Privat/k8sctrl/vendor/symfony/console/Application.php(886): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#14 /Users/jan/Projekte/Privat/k8sctrl/vendor/symfony/console/Application.php(262): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateMakeCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#15 /Users/jan/Projekte/Privat/k8sctrl/vendor/symfony/console/Application.php(145): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#16 /Users/jan/Projekte/Privat/k8sctrl/vendor/illuminate/console/Application.php(89): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#17 /Users/jan/Projekte/Privat/k8sctrl/vendor/laravel/lumen-framework/src/Console/Kernel.php(116): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#18 /Users/jan/Projekte/Privat/k8sctrl/artisan(35): Laravel\\Lumen\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#19 {main}
+"} 
