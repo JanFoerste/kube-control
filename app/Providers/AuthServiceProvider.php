@@ -6,6 +6,7 @@ use Firebase\JWT\JWT;
 use Illuminate\Auth\GenericUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -15,7 +16,7 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         //
     }
@@ -23,7 +24,7 @@ class AuthServiceProvider extends ServiceProvider
     /**
      * Boot the authentication services for the application.
      *
-     * @return void
+     * @return void|GenericUser
      */
     public function boot()
     {
@@ -44,6 +45,8 @@ class AuthServiceProvider extends ServiceProvider
                         ->find($credentials->sub);
 
                     if ($user) {
+                        $this->defineGates();
+
                         return new GenericUser((array)$user);
                     }
                 } catch (\Exception $e) {
@@ -52,6 +55,16 @@ class AuthServiceProvider extends ServiceProvider
             }
 
             return null;
+        });
+    }
+
+    /**
+     * Define the authorization gates
+     */
+    private function defineGates(): void
+    {
+        Gate::define('edit-user', function ($user, $userToEdit) {
+           return $user->id === $userToEdit->id || $user->role === 'admin';
         });
     }
 }

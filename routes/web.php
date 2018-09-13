@@ -11,27 +11,45 @@
 |
 */
 
-$router->group(
-    ['middleware' => 'guest'],
-    function () use ($router) {
+/**
+ * Routes without authentication
+ *
+ * @var \Laravel\Lumen\Routing\Router $router
+ */
+$router->group(['middleware' => 'guest'], function () use ($router) {
 
-        $router->post('/auth/login', 'AuthController@authenticate');
+    $router->post('auth/token', ['as' => 'getToken', 'uses' => 'AuthController@authenticate']);
 
-    }
-);
+});
 
-$router->group(
-    ['middleware' => 'auth'],
-    function () use ($router) {
+/**
+ * Authenticated routes
+ */
+$router->group(['middleware' => 'auth'], function () use ($router) {
 
-        $router->post('/auth/renew', 'AuthController@renewToken');
+    $router->post('auth/renew', ['as' => 'renewToken', 'uses' => 'AuthController@renewToken']);
 
-        $router->get('/', function (\Illuminate\Http\Request $request) use ($router) {
-            return $router->app->version();
-        });
+    $router->get('/', function (\Illuminate\Http\Request $request) use ($router) {
+        return $router->app->version();
+    });
 
-    }
-);
+    // /user/ routes
+    $router->group(['prefix' => 'users'], function () use ($router) {
+
+        $router->get('{username}', ['as' => 'getUser', 'uses' => 'UserController@getUser']);
+        $router->patch('{username}', ['as' => 'modifyUser', 'uses' => 'UserController@modifyUser']);
+        $router->delete('{username}', ['as' => 'deleteUser', 'uses' => 'UserController@deleteUser']);
+
+    });
+
+    // Routes only accessible by admins
+    $router->group(['middleware' => 'admin'], function () use ($router) {
+
+        $router->post('users', ['as' => 'createUser', 'uses' => 'UserController@createUser']);
+
+    });
+
+});
 
 
 

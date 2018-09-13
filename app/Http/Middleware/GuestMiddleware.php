@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Contracts\Auth\Factory as Auth;
 
-class Guest
+class GuestMiddleware
 {
     /**
      * The authentication guard factory instance.
@@ -35,10 +35,13 @@ class Guest
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if ($this->auth->guard($guard)->guest()) {
-            return $next($request);
+        if (!$this->auth->guard($guard)->guest()) {
+            return response()->json([
+               'error' => 'You are already logged in.',
+               'renew_token' => route('renewToken')
+            ]);
         }
 
-        return redirect('/');
+        return $next($request);
     }
 }

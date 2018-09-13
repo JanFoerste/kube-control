@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Firebase\JWT\JWT;
-use Illuminate\Auth\GenericUser;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -31,7 +30,7 @@ class AuthController extends Controller
      * @param object $user
      * @return string
      */
-    protected function jwt($user): string
+    private function jwt($user): string
     {
         $payload = [
             'iss' => 'k8sctrl',
