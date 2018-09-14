@@ -36,6 +36,7 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
     // /user/ routes
     $router->group(['prefix' => 'users'], function () use ($router) {
 
+        $router->get('/', ['as' => 'getUsers', 'uses' => 'UserController@getUsers']);
         $router->get('{username}', ['as' => 'getUser', 'uses' => 'UserController@getUser']);
         $router->patch('{username}', ['as' => 'modifyUser', 'uses' => 'UserController@modifyUser']);
         $router->delete('{username}', ['as' => 'deleteUser', 'uses' => 'UserController@deleteUser']);

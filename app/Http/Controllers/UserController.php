@@ -6,7 +6,8 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Gate;use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -68,6 +69,28 @@ class UserController extends Controller
         unset($user->password);
 
         return response()->json($user);
+    }
+
+    /**
+     * @return JsonResponse
+     */
+    public function getUsers(): JsonResponse
+    {
+        parse_str($this->request->getQueryString(), $query);
+
+        if (array_key_exists('limit', $query)) {
+            $limit = $query['limit'];
+        } else {
+            $limit = 20;
+        }
+
+        if (array_key_exists('page', $query)) {
+            $page = $query['page'];
+        } else {
+            $page = 0;
+        }
+
+        return response()->json($query);
     }
 
     /**
